@@ -40,9 +40,14 @@ post '/visit' do
   	:name_user => name_user,
   	:phone => phone,
   	:barber => barber,
-  	:color => color
+  	:color => color,
+    :datestamp_visit=> datetime
   	)
-	erb "OK, username is #{name_user}, #{phone}, #{datetime}, #{barber}, #{color}"
+  last_user = Client.last
+	erb "OK, <br />Username is #{last_user.name_user}<br /> \
+  We call yon on phone #{last_user.phone},<br />  \
+  We are waiting for you to #{last_user.datestamp_visit},<br /> \
+  Your barber #{last_user.barber}"
 end
 
 get '/contacts' do
