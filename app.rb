@@ -30,13 +30,10 @@ get '/visit' do
 end
 
 post '/visit' do
-  Client.create(params[:client])
-
-  last_user = Client.last
-
-	erb "OK, <br />Username is #{last_user.name_user}<br /> \
-  We call yon on phone #{last_user.phone},<br />  \
-  We are waiting for you to #{last_user.datestamp_visit},<br /> \
+ Client.create(params[:client]) ? last_user = Client.last : halt(erb('Bad, not saved :('))
+	erb "OK, <br />Username is #{last_user.name_user}<br />\
+  We call yon on phone #{last_user.phone},<br />\
+  We are waiting for you to #{last_user.datestamp_visit},<br />\
   Your barber #{last_user.barber}"
 end
 
@@ -45,7 +42,5 @@ get '/contacts' do
 end
 
 post '/contacts' do
-  Contact.create(params[:contact])
-  erb "OK, saved."
+  Contact.create(params[:contact]) ? erb("OK, saved!") : halt(erb("Bad, not saved :("))
 end
-
