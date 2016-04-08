@@ -2,7 +2,7 @@
 
 ###Preparation
 
-1. install gem with bundle
+1.install gem with bundle
 ```
     source "https://rubygems.org"
     gem "sinatra"
@@ -17,13 +17,14 @@
     end
 ```
 
-2. Make Rakefile with lines for example for sinatra:
+2.Make Rakefile with lines for example for sinatra:
+
 ```
     require "./app"
     require "sinatra/activerecord/rake"
 ```
 
-    and run rake -T for check it's work
+and run rake -T for check it's work
 
 ###Common action
 
