@@ -1,26 +1,37 @@
 ##Useful checklist for exec migration
-preparation
+
+###preparation
+
 1. install gem with bundle
-    ```
+
     source "https://rubygems.org"
+
     gem "sinatra"
+
     gem "sinatra-reloader"
+
     gem "pony"
+
     gem "sqlite3"
+
     gem "activerecord"
+
     gem "sinatra-activerecord"
+
     gem "sinatra-contrib"
 
     group :development do
       gem "tux"
     end
-    ```
 
 2. Make Rakefile with lines for example for sinatra:
+  
   require "./app"
+
   require "sinatra/activerecord/rake"
 
   and run rake -T for check it's work
+
 
 1. set :database ...
 2. create model(in our privatcse in file 'app.rb' class Barber < ActiveRecord::Base fore example)
