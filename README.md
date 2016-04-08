@@ -1,6 +1,6 @@
 ##Useful checklist for exec migration
 
-###preparation
+###Preparation
 
 1. install gem with bundle
 
@@ -32,6 +32,7 @@
 
   and run rake -T for check it's work
 
+###Common action
 
 1. set :database ...
 2. create model(in our privatcse in file 'app.rb' class Barber < ActiveRecord::Base fore example)
