@@ -31,16 +31,23 @@ get '/' do
 end
 
 get '/visit' do
+  @cl = Client.new
 	erb :visit
 end
 
 post '/visit' do
-  cl = Client.new(params[:client])
-  cl.save ? last_user = Client.last : halt(erb('Bad, not saved :('))
-	erb "OK, <br />Username is #{last_user.name_user}<br />\
-  We call yon on phone #{last_user.phone},<br />\
-  We are waiting for you to #{last_user.datestamp_visit},<br />\
-  Your barber #{last_user.barber}"
+  @cl = Client.new(params[:client])
+  
+  if @cl.save
+    last_user = Client.last
+    erb "OK, <br />Username is #{last_user.name_user}<br />\
+    We call yon on phone #{last_user.phone},<br />\
+    We are waiting for you to #{last_user.datestamp_visit},<br />\
+    Your barber #{last_user.barber}"
+  else
+    @errors = @cl.errors.full_messages.first
+    erb :visit
+  end
 end
 
 get '/contacts' do
