@@ -6,6 +6,11 @@ require 'sinatra/activerecord'
 set :database, "sqlite3:./database/barbershop.db"
 
 class Client < ActiveRecord::Base
+  validates :name_user, presence: true
+  validates :phone, presence: true
+  validates :barber, presence: true
+  validates :color, presence: true
+  validates :datestamp_visit, presence: true
 
 end
 
@@ -30,7 +35,8 @@ get '/visit' do
 end
 
 post '/visit' do
- Client.create(params[:client]) ? last_user = Client.last : halt(erb('Bad, not saved :('))
+  cl = Client.new(params[:client])
+  cl.save ? last_user = Client.last : halt(erb('Bad, not saved :('))
 	erb "OK, <br />Username is #{last_user.name_user}<br />\
   We call yon on phone #{last_user.phone},<br />\
   We are waiting for you to #{last_user.datestamp_visit},<br />\
@@ -42,5 +48,6 @@ get '/contacts' do
 end
 
 post '/contacts' do
-  Contact.create(params[:contact]) ? erb("OK, saved!") : halt(erb("Bad, not saved :("))
+  cont = Contact.new(params[:contact])
+  Contact.save(cont) ? erb("OK, saved!") : halt(erb("Bad, not saved :("))
 end

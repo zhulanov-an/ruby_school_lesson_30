@@ -33,3 +33,9 @@ and run rake -T for check it's work
 3. make file migration "rake db:create_migration NAME='...' "
 4. edit migration file with special syntax ActiveRecord
 5. exec migration file with comand "rake db:migrate" Success!
+
+##Useful validators model
+1.In class model:
+```
+    validates :name, presence: true
+```
