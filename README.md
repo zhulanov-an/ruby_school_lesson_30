@@ -1,6 +1,7 @@
 ##Useful checklist for exec migration
 preparation
 1. install gem with bundle
+    ```
     source "https://rubygems.org"
     gem "sinatra"
     gem "sinatra-reloader"
@@ -13,6 +14,7 @@ preparation
     group :development do
       gem "tux"
     end
+    ```
 
 2. Make Rakefile with lines for example for sinatra:
   require "./app"
