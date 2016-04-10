@@ -68,3 +68,8 @@ get '/visitors' do
   @clients = Client.all
   erb :visitors
 end
+
+get '/visitor/:id' do
+  @client = Client.find params[:id]
+  erb :visitor
+end

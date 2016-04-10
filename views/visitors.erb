@@ -6,20 +6,14 @@
 			<th>#</th>
 			<th>Имя</th>
 			<th>Дата визита</th>
-			<th>Телефон</th>
-			<th>Мастер</th>
-			<th>Цвет волос</th>
 		</tr>
 	</thead>
 	<tbody>
 	<% @clients.each do |client| %>
 		<tr>
 			<th scope="row"><%= client.id %></th>
-			<td><%= client.name_user %></td>
+			<td> <a href="/visitor/<%= client.id %>"><%= client.name_user %></a></td>
 			<td><%= client.datestamp_visit %></td>
-			<td><%= client.phone %></td>
-			<td><%= client.barber %></td>
-			<td><%= client.color%></td>
 		</tr>
 		<% end %>
 	</tbody>
