@@ -43,7 +43,7 @@ post '/visit' do
     erb "OK, <br />Username is #{last_user.name_user}<br />\
     We call yon on phone #{last_user.phone},<br />\
     We are waiting for you to #{last_user.datestamp_visit},<br />\
-    Your barber #{last_user.barber}"
+    Your barber #{last_user.barber}<p><a href='/'>На главную</a></p>"
   else
     @errors = @cl.errors.full_messages.first
     erb :visit
@@ -62,4 +62,9 @@ end
 get '/barber/:id' do
   @barber = Barber.find(params[:id])
   erb :barber
+end
+
+get '/visitors' do
+  @clients = Client.all
+  erb :visitors
 end
