@@ -58,3 +58,8 @@ post '/contacts' do
   cont = Contact.new(params[:contact])
   Contact.save(cont) ? erb("OK, saved!") : halt(erb("Bad, not saved :("))
 end
+
+get '/barber/:id' do
+  @barber = Barber.find(params[:id])
+  erb :barber
+end
